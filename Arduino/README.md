@@ -4,10 +4,10 @@
 
 ## Hardware:
 
-*LED strip: digitally-addressable pixel LED
+* LED strip: digitally-addressable pixel LED
 
-*Jumper wires
+* Jumper wires
 
-*Bluetooth HC-06 (or HC-05 as slave)
+* Bluetooth HC-06 (or HC-05 as slave)
 
-*Arduino UNO
+* Arduino UNO
