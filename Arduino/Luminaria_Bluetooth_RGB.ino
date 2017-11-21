@@ -1,7 +1,9 @@
 /*
   Sketch arduino por Waldo Costa
   http://www.waldocosta.com.br
-  atualizado em: 2017 nov 18
+  upload: 2017 nov 18
+  update: 2017 nov 20:
+    # smooth color changes
 
   Baseado parcialmente no sketch de Tom Igoe disponível em:
   http://www.arduino.cc/en/Tutorial/SerialEvent
@@ -13,14 +15,20 @@
 #define PIXEL_COUNT 5 //número de pixels em cada fita de led
 
 // utilizado para debug:
-int delayval = 10; // valor de delay entre a atualização de cada pixel
+int delayval = 2; // valor de delay entre a atualização de cada pixel
 
 // valores iniciais para vermelho, verde e azul
-int vermelho_int = 0;
+int vermelho_int = 0;           // valor final enviado para o led
+int vermelho_temp = 0;
+int previous_vermelho_int = 0;  // guarda o valor anterior para fazer a transição suave
 
 int verde_int = 0;
+int verde_temp = 0;
+int previous_verde_int = 0;
 
 int azul_int = 0;
+int azul_temp = 0;
+int previous_azul_int = 0;
 
 
 // foram utilizadas 4 fitas de leds: strip1 a 4, nos pinos 5, 6, 9 e 10.
@@ -97,12 +105,54 @@ void loop() {
     // look for the newline. That's the end of your sentence:
     if (Serial.read() == '\n') {
 
-      vermelho_int = red;
-      verde_int    = green;
-      azul_int     = blue;
+      previous_vermelho_int = vermelho_int;
+      previous_verde_int = verde_int;
+      previous_azul_int = azul_int;
+
+      vermelho_temp = red;
+      verde_temp    = green;
+      azul_temp     = blue;
 
     }
   }
+
+
+  if (previous_vermelho_int > vermelho_temp) {
+    previous_vermelho_int--;
+    vermelho_int = previous_vermelho_int;
+  }
+  else if (previous_vermelho_int < vermelho_temp) {
+    previous_vermelho_int++;
+    vermelho_int = previous_vermelho_int;
+  }
+  else {
+    //nada
+  }
+
+  if (previous_verde_int > verde_temp) {
+    previous_verde_int--;
+    verde_int = previous_verde_int;
+  }
+  else if (previous_verde_int < verde_temp) {
+    previous_verde_int++;
+    verde_int = previous_verde_int;
+  }
+  else {
+    //nada
+  }
+
+  if (previous_azul_int > azul_temp) {
+    previous_azul_int--;
+    azul_int = previous_azul_int;
+  }
+  else if (previous_azul_int < azul_temp) {
+    previous_azul_int++;
+    azul_int = previous_azul_int;
+  }
+  else {
+    //nada
+  }
+
 
   //insere a cor nos pixels
   for (int k = 0; k < PIXEL_COUNT; k++) {
@@ -111,26 +161,24 @@ void loop() {
     strip1.setPixelColor(k, strip1.Color(vermelho_int, verde_int, azul_int)); //
     strip1.show();
     // o delay pode ser ativado para observar a ordem em que as cores são atualizadas
-    delay(delayval);
+    //delay(delayval);
 
     // envia o valor de vermelho, verde e azul para o pixel de número k da fita 2
     strip2.setPixelColor(k, strip2.Color(vermelho_int, verde_int, azul_int)); //
     strip2.show();
-    delay(delayval);
+    //delay(delayval);
 
     // envia o valor de vermelho, verde e azul para o pixel de número k da fita 31
     strip3.setPixelColor(k, strip3.Color(vermelho_int, verde_int, azul_int)); //
     strip3.show();
-    delay(delayval);
+    //delay(delayval);
 
     // envia o valor de vermelho, verde e azul para o pixel de número k da fita 4
     strip4.setPixelColor(k, strip4.Color(vermelho_int, verde_int, azul_int)); //
     strip4.show();
     delay(delayval);
+
   }
 
 
 }//fim do loop
-
-
-
