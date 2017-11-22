@@ -25,3 +25,5 @@ return msg;
 First look for the HC-06 bluetooth address, then the **HC-05**(wired to the Raspberry Pi RX TX GPio pins) must be set to master and autoconnect to that found address. 
 
 ![Raspberry Pi wiring](https://github.com/waldooo/Bluetooth-RGB-light/blob/master/images/luminaria_bluetooth_RGB_raspberryPi.png)
+
+![Raspberry Pi with wifi and bluetooth photo](https://github.com/waldooo/Bluetooth-RGB-light/blob/master/images/2017-11-20%2001.37.36.jpg)
