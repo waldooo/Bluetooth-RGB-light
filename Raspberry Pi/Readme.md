@@ -1,5 +1,8 @@
 # Raspberry Pi
 
+![Raspberry Pi with wifi and bluetooth photo](https://github.com/waldooo/Bluetooth-RGB-light/blob/master/images/2017-11-20%2001.37.36.jpg)
+
+
 ## MQTT and Node-RED
 
 With the [mqtt dash](https://play.google.com/store/apps/details?id=net.routix.mqttdash) Android App you can create a dashboard with a color picker and send color values direct from it. The color values would be published to a topic (e.g. home/sala/cor) in the #FFFFFF format.
@@ -26,4 +29,3 @@ First look for the HC-06 bluetooth address, then the **HC-05**(wired to the Rasp
 
 ![Raspberry Pi wiring](https://github.com/waldooo/Bluetooth-RGB-light/blob/master/images/luminaria_bluetooth_RGB_raspberryPi.png)
 
-![Raspberry Pi with wifi and bluetooth photo](https://github.com/waldooo/Bluetooth-RGB-light/blob/master/images/2017-11-20%2001.37.36.jpg)
