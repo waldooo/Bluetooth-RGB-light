@@ -4,7 +4,7 @@ The RGB led strip is connected to an Arduino and receives the color data from a 
 # How to send colors
 Send messages in the RGB format with values from 0 to 255. (both #255,255,255 or 255,255,255 are valid)
 
-Make sure you use ('\n') at the end of line.
+Make sure you use '\n' (newline) at the end of line sent.
 
 ## Hardware used:
 
